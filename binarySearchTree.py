@@ -84,6 +84,38 @@ class BST:
         if(pointer.right):
             self.inOrderHelper(pointer.right, treeList)
 
+    def preOrderTraversal(self):
+        self.checkEmpty()
+        treeList = []
+        self.preOrderHelper(self.root, treeList)
+        print(*treeList)
+
+    def preOrderHelper(self, pointer, treeList):
+
+        treeList.append(pointer.value)
+
+        if(pointer.left):
+            self.preOrderHelper(pointer.left, treeList)
+
+        if(pointer.right):
+            self.preOrderHelper(pointer.right, treeList)
+
+    def postOrderTraversal(self):
+        self.checkEmpty()
+        treeList = []
+        self.postOrderHelper(self.root, treeList)
+        print(*treeList)
+
+    def postOrderHelper(self, pointer, treeList):
+
+        if(pointer.left):
+            self.postOrderHelper(pointer.left, treeList)
+
+        if(pointer.right):
+            self.postOrderHelper(pointer.right, treeList)
+
+        treeList.append(pointer.value)
+
 
 
 
@@ -138,5 +170,9 @@ myBST.levelOrderTraversal()
 print("-----Finding a value-----")
 print("4 Found?", myBST.findValue(4))
 print("7 Found?:", myBST.findValue(7))
-print("-----In Order Traversal-----")
+print("-----In-Order Traversal-----")
 myBST.inOrderTraversal()
+print("-----Pre-Order Traversal-----")
+myBST.preOrderTraversal()
+print("-----Post-Order Traversal-----")
+myBST.postOrderTraversal()
